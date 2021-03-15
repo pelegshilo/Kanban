@@ -1,0 +1,30 @@
+<div class="task">
+<h3>{{task['title']}}</h3>
+<p>{{task['description']}}</p>
+<form action="/update" method="post">
+    {# Selects new status for task #}
+    <select name="status" id="status">
+        {% if task['category'] == "todo" %}
+        <option value="todo" selected="selected">To do</option>
+        {% else %}
+        <option value="todo">To do</option>
+        {% endif %}
+        {% if task['category'] == "doing" %}
+        <option value="doing" selected="selected">Doing</option>
+        {% else %}
+        <option value="doing">Doing</option>
+        {% endif %}
+        {% if task['category'] == "done" %}
+        <option value="done" selected="selected">Done</option>
+        {% else %}
+        <option value="done">Done</option>
+        {% endif %}
+    </select>
+    <input type = "hidden" name = "id" value =  "{{task['id']}}"/>
+    <button type="submit">Update</button>
+</form>
+<form action="/delete" method="post">
+    <input type ="hidden" name ="id" value ="{{task['id']}}"/>
+    <input class="danger" type="submit" value="Delete" onclick="return confirm('Are you sure?');">
+</form>
+</div>
