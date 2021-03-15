@@ -3,7 +3,7 @@
 <p>{{task['description']}}</p>
 <form action="/update" method="post">
     {# Selects new status for task #}
-    <select name="status" id="status">
+    <select name="status" id="status-{{task['id']}}">
         {% if task['category'] == "todo" %}
         <option value="todo" selected="selected">To do</option>
         {% else %}
